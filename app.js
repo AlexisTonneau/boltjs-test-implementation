@@ -2,7 +2,7 @@ const { App, LogLevel } = require('@slack/bolt');
 const { config } = require('dotenv');
 const { registerListeners } = require('./listeners');
 
-config();
+config({ path: `.env.${process.env.NODE_ENV}` });
 
 /** Initialization */
 const app = new App({
@@ -10,6 +10,9 @@ const app = new App({
   socketMode: true,
   appToken: process.env.SLACK_APP_TOKEN,
   logLevel: LogLevel.DEBUG,
+  clientOptions: {
+    slackApiUrl: process.env.SLACK_API_URL,
+  },
 });
 
 /** Register Listeners */
