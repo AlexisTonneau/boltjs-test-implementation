@@ -1,0 +1,14 @@
+When we say hello on a channel, it should answer with how are you
+    Send Message "hello" To #general
+    Expect Message "hello, how are you?"
+
+
+When we say hi on a channel, it should answer with hi how are you
+    Send Message "hi" To #general
+    Expect Message "hi, how are you?"
+
+
+
+When we say bye on a channel, it should not answer
+    Send Message "bye" To #general
+    Not Expect Message "bye, how are you?"
