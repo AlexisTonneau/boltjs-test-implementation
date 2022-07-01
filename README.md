@@ -43,3 +43,34 @@ Running the tests:
 - Reproduce actions from step 1
 - Run tests: `onets test -f tests/messages/sample-message.onets`
 
+
+### Step 3: Covering all listeners
+
+For the moment, modals aren't supported yet on Onets.
+
+Then, I wasn't able to write a test for the listeners:
+- `listeners/action/`: Actions are supported on Onets, but the behavior of this action is to interact with a modal.
+- `listeners/shortcuts/`: Shortcuts are supported on Onets, but the behavior of this shortcut is to interact with a modal.
+- `listeners/views/`: Because Onets doesn't support modals, it doesn't support `view_submission` as well.
+
+I could have been further and modify those behaviors, but I decided to not cheat and to write tests on the unmodified listeners.
+
+
+#### Events listener
+
+Commit link [here](https://github.com/AlexisTonneau/boltjs-test-implementation/commit/a4bb7c24ed5618ddc33b9fb8701e46055bcf9e6b)
+
+- I created a new file: `tests/events/app-home-opened.onets`
+- I wrote a test case: _When we open the app, it should display the home view_
+- I had to write a JSON file that will be compared for our assertion: `tests/events/app-home.json`
+- I was able to load it in my test file with Load keyword
+- Then I used it in my _Expect_ keyword
+
+
+#### Commands listener
+
+Commit link [here](https://github.com/AlexisTonneau/boltjs-test-implementation/commit/029d4943dae74bdd2e864a50e133041bddb9d92c)
+
+- I created a new file: `tests/commands/sample-command.onets`
+- I wrote a test case: _When a /sample-command is executed, it should respond with an ephemeral message_
+
