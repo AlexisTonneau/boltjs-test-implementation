@@ -1,0 +1,11 @@
+Settings
+    Load "./app-home.json" As appHomeBlocks
+
+Test Setup
+    Create User johndoe@email.net As john
+
+
+When a user open a app home, it should display the home view
+    Open App Home By john
+    Expect App Home To john StrictEqual appHomeBlocks
+
