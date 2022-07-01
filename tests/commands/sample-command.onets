@@ -1,0 +1,3 @@
+When a /sample-command is executed, it should respond
+    Send Message "/sample-command" To #general
+    Expect Ephemeral "Responding to the sample command!"
